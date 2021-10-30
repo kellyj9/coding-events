@@ -6,17 +6,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("events")
 public class EventController {
 
     @GetMapping
-    public String getEventsList(Model model) {
-        ArrayList<String> events = new ArrayList<>();
-        events.add("Hear from the Hirer Event");
-        events.add("Stellar Soirée");
-        events.add("Mock Inteews");
+    public String displayAllEvents(Model model) {
+        List<String> events = new ArrayList<>();
+        events.add("Code With Pride");
+        events.add("Strange Loop");
+        events.add("SpringOne Platform");
         model.addAttribute("events", events);
         return "events/index";
     }

@@ -5,8 +5,11 @@
     <title></title>
 </head>
 <body>
+<h1>All Events</h1>
 <ul>
-        <li th:each="event : ${events}" th:text="${event}">Cannot display events</li>
+        <th:block th:each="event : ${events}">
+        <li  th:text="${event}">Display all events here</li>
+        </th:block>
 </ul>
 
 </body>
