@@ -6,11 +6,10 @@
 </head>
 <body>
 <h1>All Events</h1>
-<ul>
-        <th:block th:each="event : ${events}">
-        <li  th:text="${event}">Display all events here</li>
-        </th:block>
-</ul>
-
+    <ul>
+            <th:block th:each="event : ${events}">
+            <li  th:text="${event}">Display all events here</li>
+            </th:block>
+    </ul>
 </body>
 </html>

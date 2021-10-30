@@ -22,4 +22,11 @@ public class EventController {
         return "events/index";
     }
 
+        // lives at /events/create
+        @GetMapping("create")
+        public String renderCreateEvent() {
+            return "events/create";
+        }
+
+
 }
