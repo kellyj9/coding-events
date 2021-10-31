@@ -19,7 +19,12 @@ public class EventController {
     @GetMapping
     public String displayAllEvents(Model model) {
         //List<String> events = new ArrayList<>();
-        model.addAttribute("events", events);
+        if (events.isEmpty()) {
+            model.addAttribute("events", "No events yet!");
+        }
+        else {
+            model.addAttribute("events", events);
+        }
 //        events.add("Code With Pride");
 //        events.add("Strange Loop");
 //        events.add("SpringOne Platform");
