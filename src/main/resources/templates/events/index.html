@@ -7,15 +7,19 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<table class="table table-striped">
+<table class="table table-hover">
         <thead>
         <tr>
                 <th>Name</th>
+                <th>Description</th>
+                <th>Location</th>
         </tr>
         </thead>
 
-        <tr th:each="event : ${events}">
-                <td  th:text="${event}">Display all events here</td>
+        <tr th:each="event : ${events.entrySet()}">
+                <td  th:text="${event.getKey()}">Display event name here</td>
+                <td th:text="${event.getValue()}">Display event description here</td>
+                <td th:replace="fragments :: address"></td>
         </tr>
 </table>
 
