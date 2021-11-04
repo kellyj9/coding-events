@@ -13,13 +13,15 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Contact Email</th>
         </tr>
         </thead>
 
         <tr th:each="event : ${events}">
-                <td  th:text="${event.id}">Display all event IDs here</td>
-                <td  th:text="${event.name}">Display all events here</td>
-                <td  th:text="${event.description}">Display all descriptions here</td>
+                <td  th:text="${event.id}">Display event ID here</td>
+                <td  th:text="${event.name}">Display event here</td>
+                <td  th:text="${event.description}">Display description here</td>
+                <td  th:text="${event.contactEmail}">Display contact email here</td>
         </tr>
 </table>
 
