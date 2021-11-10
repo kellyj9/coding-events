@@ -8,28 +8,29 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<p th:text="${errorMsg}" style="color:red"></p>
-
 <form method="POST" action="/events/create"><!--Don't actually need action-->
-    <div class="from-group">
+    <div class="form-group">
         <label>Name
-            <input type="text" name="name" class="form-control"/>
+            <input th:field="${event.name}" class="form-control"/>
         </label>
     </div>
+    <p class="error" th:errors="${event.name}"></p>
 
-    <div class="from-group">
+    <div class="form-group">
         <label>Description
-            <input type="text" name="description" class="form-control"/>
+            <input th:field="${event.description}" class="form-control"/>
         </label>
     </div>
+    <p class="error" th:errors="${event.description}"></p>
 
-    <div class="from-group">
+    <div class="form-group">
         <label>Contact Email
-            <input type="text" name="contactEmail" class="form-control"/>
+            <input th:field="${event.contactEmail}"  class="form-control"/>
         </label>
     </div>
+    <p class="error" th:errors="${event.contactEmail}"></p>
 
-    <div class="from-group">
+    <div class="form-group">
         <input type="submit" value="Create Event" class="btn btn-success" />
     </div>
 </form>
