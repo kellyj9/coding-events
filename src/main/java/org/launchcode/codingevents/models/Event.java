@@ -23,17 +23,21 @@ public class Event {
     @Email(message = "invalid email.  Try again.")
     private String contactEmail;
 
+    @NotBlank(message="Location is required.")
+    private String location;
+
 
     public Event() {
         this.id = nextId;
         nextId++;
     }
 
-    public Event(String name, String description, String contactEmail) {
+    public Event(String name, String description, String contactEmail, String location) {
        this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+        this.location = location;
     }
 
 
@@ -59,6 +63,14 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public int getId() {
