@@ -15,15 +15,16 @@
                 <th>Description</th>
                 <th>Contact Email</th>
                 <th>Location</th>
+                <th>Registration Required?</th>
         </tr>
         </thead>
-
         <tr th:each="event : ${events}">
                 <td  th:text="${event.id}">Display event ID here</td>
                 <td  th:text="${event.name}">Display event here</td>
                 <td  th:text="${event.description}">Display description here</td>
                 <td  th:text="${event.contactEmail}">Display contact email here</td>
                 <td  th:text="${event.location}">Display location here</td>
+                <td  th:text="${event.getIsRegistrationRequired()} == true ? 'Yes' : 'An Error Occurred'">Display if registration required here</td>
         </tr>
 </table>
 
