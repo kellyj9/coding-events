@@ -16,6 +16,7 @@
                 <th>Contact Email</th>
                 <th>Location</th>
                 <th>Registration Required?</th>
+                <th>Type</th>
         </tr>
         </thead>
         <tr th:each="event : ${events}">
@@ -25,6 +26,7 @@
                 <td  th:text="${event.contactEmail}">Display contact email here</td>
                 <td  th:text="${event.location}">Display location here</td>
                 <td  th:text="${event.getIsRegistrationRequired()} == true ? 'Yes' : 'An Error Occurred'">Display if registration required here</td>
+                <td  th:text="${event.type.displayName}">Display type here</td>
         </tr>
 </table>
 

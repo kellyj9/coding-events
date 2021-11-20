@@ -31,21 +31,24 @@ public class Event {
     private Boolean isRegistrationRequired; // must always be true for the purpose of
                                                             // validation practice
 
+    //@NotBlank(message = "Event type is required.")
+    private EventType type;
+
     public Event() {
         this.id = nextId;
         nextId++;
     }
 
     public Event(String name, String description, String contactEmail, String location,
-                 Boolean isRegistrationRequired) {
+                 Boolean isRegistrationRequired, EventType type) {
        this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.location = location;
         this.isRegistrationRequired = isRegistrationRequired;
+        this.type=type;
     }
-
 
     public String getName() {
         return name;
@@ -87,6 +90,13 @@ public class Event {
         this.isRegistrationRequired = isRegistrationRequired;
     }
 
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
+    }
 
     public int getId() {
         return id;
