@@ -2,6 +2,7 @@ package org.launchcode.codingevents.controllers;
 
 import org.launchcode.codingevents.data.EventData;
 import org.launchcode.codingevents.models.Event;
+import org.launchcode.codingevents.models.EventType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -28,7 +29,10 @@ public class EventController {
     @GetMapping("create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
-        model.addAttribute("event", new Event()); // "event" label not required here
+       model.addAttribute("event", new Event()); // "event" label not required here
+        model.addAttribute("types", EventType.values()); // will return an array of the four
+        // different values that my EventType that exist for that enum and then we can
+        // use that in the form to create a drop down
         return "events/create";
     }
 
@@ -39,6 +43,7 @@ public class EventController {
         // if there are any errors in the Model object...go back to the form
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Event");
+            model.addAttribute("types", EventType.values()); // added
             return "events/create";
         }
         EventData.add(newEvent);
