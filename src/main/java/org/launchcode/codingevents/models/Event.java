@@ -1,10 +1,8 @@
 package org.launchcode.codingevents.models;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.*;
 
 @Entity
 public class Event extends AbstractEntity {
@@ -27,20 +25,22 @@ public class Event extends AbstractEntity {
     private Boolean isRegistrationRequired; // must always be true for the purpose of
     // validation practice
 
-    private EventType type;
+    // JPA annotations:
+    @ManyToOne // relate one event category for an event
+    @NotNull(message = "Category is required.")
+    private EventCategory eventCategory;
 
     public Event() { // we always need an empty constructor inside persistence class
     }
 
     public Event(String name, String description, String contactEmail, String location,
-                 Boolean isRegistrationRequired, EventType type) {
-        //this();
+                 Boolean isRegistrationRequired, EventCategory eventCategory) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.location = location;
         this.isRegistrationRequired = isRegistrationRequired;
-        this.type = type;
+        this.eventCategory = eventCategory;
     }
 
     public String getName() {
@@ -83,12 +83,12 @@ public class Event extends AbstractEntity {
         this.isRegistrationRequired = isRegistrationRequired;
     }
 
-    public EventType getType() {
-        return type;
+    public EventCategory getEventCategory() {
+        return eventCategory;
     }
 
-    public void setType(EventType type) {
-        this.type = type;
+    public void setEventCategory(EventCategory eventCategory) {
+        this.eventCategory = eventCategory;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package org.launchcode.codingevents.controllers;
 
+import org.launchcode.codingevents.data.EventCategoryRepository;
 import org.launchcode.codingevents.data.EventRepository;
 import org.launchcode.codingevents.models.Event;
-import org.launchcode.codingevents.models.EventType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +20,8 @@ public class EventController {
     private EventRepository eventRepository;
     // findAll, save, findById are part of the EventRepository interface
 
-    //private static List<Event> events = new ArrayList<>();
+    @Autowired
+    private EventCategoryRepository eventCategoryRepository;
 
     @GetMapping
     public String displayAllEvents(Model model) {
@@ -34,7 +35,7 @@ public class EventController {
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
        model.addAttribute("event", new Event()); // "event" label not required here
-        model.addAttribute("types", EventType.values()); // will return an array of the four
+        model.addAttribute("categories", eventCategoryRepository.findAll()); // will return an array of the four
         // different values that my EventType that exist for that enum and then we can
         // use that in the form to create a drop down
         return "events/create";
@@ -47,7 +48,7 @@ public class EventController {
         // if there are any errors in the Model object...go back to the form
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Event");
-            model.addAttribute("types", EventType.values()); // added
+            model.addAttribute("categories", eventCategoryRepository.findAll()); // added
             return "events/create";
         }
         eventRepository.save(newEvent);
