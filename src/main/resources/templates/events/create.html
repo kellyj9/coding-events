@@ -4,8 +4,6 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<h1>Create Event</h1>
-
 <nav th:replace="fragments :: navigation"></nav>
 
 <form method="POST" action="/events/create"><!--Don't actually need action-->
@@ -46,7 +44,7 @@
     <div class="form-group">
         <label>
             Type
-            <select th:field="*{event.type}">
+            <select th:field="${event.type}">
                 <option th:each="type : ${types}"
                             th:value="${type}"
                             th:text="${type.displayName}"

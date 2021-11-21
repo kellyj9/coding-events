@@ -1,14 +1,9 @@
 package org.launchcode.codingevents.models;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Entity
@@ -38,7 +33,6 @@ public class Event {
     private Boolean isRegistrationRequired; // must always be true for the purpose of
                                                             // validation practice
 
-    //@NotBlank(message = "Event type is required.")
     private EventType type;
 
     public Event() { // we always need an empty constructor inside persistence class
