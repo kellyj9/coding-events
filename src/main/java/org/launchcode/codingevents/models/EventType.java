@@ -1,6 +1,7 @@
 package org.launchcode.codingevents.models;
 
 public enum EventType {
+
     // create four different types for my EventType enum
     CONFERENCE("Conference"),
     MEETUP("Meetup"),
