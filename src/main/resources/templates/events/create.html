@@ -43,15 +43,16 @@
     <p class="error" th:errors="${event.isRegistrationRequired}"></p>
     <div class="form-group">
         <label>
-            Type
-            <select th:field="${event.type}">
-                <option th:each="type : ${types}"
-                            th:value="${type}"
-                            th:text="${type.displayName}"
+            Category
+            <select th:field="${event.eventCategory}">
+                <option th:each="eventCategory : ${categories}"
+                            th:value="${eventCategory.id}"
+                            th:text="${eventCategory.name}"
                 ></option>
             </select>
         </label>
     </div>
+    <p class="error" th:errors="${event.eventCategory}"></p>
     <div>
         <input type="submit" value="Create Event" class="btn btn-success" />
     </div>
