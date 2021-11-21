@@ -19,7 +19,7 @@ import java.util.List;
 public class EventController {
 
     @Autowired // specifies that Spring Boot should auto-populate this field
-                      // feature of Spring Boot - dependenccy injection / inversion of control
+                      // feature of Spring Boot - dependency injection / inversion of control
     private EventRepository eventRepository;
     // findAll, save, findById are part of the EventRepository interface
 
