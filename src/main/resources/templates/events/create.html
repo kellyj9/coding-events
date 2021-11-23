@@ -16,31 +16,31 @@
 
     <div class="form-group">
         <label>Description
-            <input th:field="${event.description}" class="form-control"/>
+            <input th:field="${event.eventDetails.description}" class="form-control"/>
         </label>
     </div>
-    <p class="error" th:errors="${event.description}"></p>
+    <p class="error" th:errors="${event.eventDetails.description}"></p>
 
     <div class="form-group">
         <label>Contact Email
-            <input th:field="${event.contactEmail}"  class="form-control"/>
+            <input th:field="${event.eventDetails.contactEmail}"  class="form-control"/>
         </label>
     </div>
-    <p class="error" th:errors="${event.contactEmail}"></p>
+    <p class="error" th:errors="${event.eventDetails.contactEmail}"></p>
 
     <div class="form-group">
         <label>Location
-            <input th:field="${event.location}"  class="form-control"/>
+            <input th:field="${event.eventDetails.location}"  class="form-control"/>
         </label>
     </div>
-    <p class="error" th:errors="${event.location}"></p>
+    <p class="error" th:errors="${event.eventDetails.location}"></p>
 
     <div class="form-group">
         <label>Event Registration Required
-            <input type="checkbox" th:field="*{event.isRegistrationRequired}"  th:value="${event.isRegistrationRequired}"  th:checked="${event.isRegistrationRequired}" class="form-check-input">
+            <input type="checkbox" th:field="*{event.eventDetails.isRegistrationRequired}"  th:value="${event.eventDetails.isRegistrationRequired}"  th:checked="${event.eventDetails.isRegistrationRequired}" class="form-check-input">
         </label>
     </div>
-    <p class="error" th:errors="${event.isRegistrationRequired}"></p>
+    <p class="error" th:errors="${event.eventDetails.isRegistrationRequired}"></p>
     <div class="form-group">
         <label>
             Category

@@ -1,7 +1,10 @@
 package org.launchcode.codingevents.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 @Entity
@@ -11,19 +14,12 @@ public class Event extends AbstractEntity {
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
     private String name;
 
-    @Size(max = 500, message = "Description too long!")
-    private String description;
-
-    @NotBlank(message = "Email is required.")
-    @Email(message = "invalid email.  Try again.")
-    private String contactEmail;
-
-    @NotBlank(message = "Location is required.")
-    private String location;
-
-    @AssertTrue(message = "Event Registration is required.")
-    private Boolean isRegistrationRequired; // must always be true for the purpose of
-    // validation practice
+    @OneToOne(cascade = CascadeType.ALL) // tells hibernate to cascade every event
+                            //on an Event Object (i.e. deleting or saving Event object) then
+                            // cascade the operation down to the EventObject
+    @Valid
+    @NotNull
+    private EventDetails eventDetails;
 
     // JPA annotations:
     @ManyToOne // relate one event category for an event
@@ -33,13 +29,8 @@ public class Event extends AbstractEntity {
     public Event() { // we always need an empty constructor inside persistence class
     }
 
-    public Event(String name, String description, String contactEmail, String location,
-                 Boolean isRegistrationRequired, EventCategory eventCategory) {
+    public Event(String name, EventCategory eventCategory) {
         this.name = name;
-        this.description = description;
-        this.contactEmail = contactEmail;
-        this.location = location;
-        this.isRegistrationRequired = isRegistrationRequired;
         this.eventCategory = eventCategory;
     }
 
@@ -51,44 +42,20 @@ public class Event extends AbstractEntity {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getContactEmail() {
-        return contactEmail;
-    }
-
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Boolean getIsRegistrationRequired() {
-        return isRegistrationRequired;
-    }
-
-    public void setIsRegistrationRequired(Boolean isRegistrationRequired) {
-        this.isRegistrationRequired = isRegistrationRequired;
-    }
-
     public EventCategory getEventCategory() {
         return eventCategory;
     }
 
     public void setEventCategory(EventCategory eventCategory) {
         this.eventCategory = eventCategory;
+    }
+
+    public EventDetails getEventDetails() {
+        return eventDetails;
+    }
+
+    public void setEventDetails(EventDetails eventDetails) {
+        this.eventDetails = eventDetails;
     }
 
     @Override
