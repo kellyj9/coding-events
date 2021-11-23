@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: navigation"></header>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <td th:text="${event.id}"></td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td th:text="${event.eventDetails.description}"></td>
+    </tr>
+    <tr>
+        <th>Contact Email</th>
+        <td th:text="${event.eventDetails.contactEmail}"></td>
+    </tr>
+    <tr>
+        <th>Location</th>
+        <td th:text="${event.eventDetails.location}"></td>
+    </tr>
+    <tr>
+        <th>Registration Required</th>
+        <td th:text="${event.eventDetails.isRegistrationRequired} == true ? 'Yes' : 'An Error Occurred'">Display if registration required here</td>
+    </tr>
+    <tr>
+        <th>Category Name</th>
+        <td th:text="${event.eventCategory.name}"></td>
+    </tr>
+
+</table>
+
+
+</body>
+</html>

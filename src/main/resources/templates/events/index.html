@@ -4,6 +4,7 @@
 <body class="container">
 <nav th:replace="fragments :: navigation"></nav>
 
+<!-- original code. saving this code for later reference.
 <table class="table table-striped">
         <thead>
         <tr>
@@ -24,6 +25,17 @@
                 <td  th:text="${event.eventDetails.location}">Display location here</td>
                 <td  th:text="${event.eventDetails.isRegistrationRequired} == true ? 'Yes' : 'An Error Occurred'">Display if registration required here</td>
                 <td  th:text="${event.eventCategory.name}">Display type here</td>
+        </tr>
+</table>
+-->
+<table class="table table-striped">
+        <thead>
+        <tr>
+                <th>Event Name</th>
+        </tr>
+        </thead>
+        <tr th:each="event : ${events}">
+                <td><a th:href="'/events/detail?eventId=' + ${event.id}" th:text="${event.name}"></a></td>
         </tr>
 </table>
 
