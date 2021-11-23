@@ -1,11 +1,10 @@
 package org.launchcode.codingevents.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Event extends AbstractEntity {
@@ -25,6 +24,9 @@ public class Event extends AbstractEntity {
     @ManyToOne // relate one event category for an event
     @NotNull(message = "Category is required.")
     private EventCategory eventCategory;
+
+    @ManyToMany
+    private final List<Tag> tags = new ArrayList<>();
 
     public Event() { // we always need an empty constructor inside persistence class
     }
@@ -57,6 +59,16 @@ public class Event extends AbstractEntity {
     public void setEventDetails(EventDetails eventDetails) {
         this.eventDetails = eventDetails;
     }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    // gives a way to add tags without touching the tag collection directly
+    public void AddTag(Tag tag) {
+        this.tags.add(tag);
+    }
+
 
     @Override
     public String toString() {
