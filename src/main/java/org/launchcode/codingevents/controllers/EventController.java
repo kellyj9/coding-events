@@ -26,7 +26,7 @@ public class EventController {
     private EventCategoryRepository eventCategoryRepository;
 
     @GetMapping
-    public String displayAllEvents(@RequestParam(required = false) Integer categoryId,  Model model) {
+    public String displayEvents(@RequestParam(required = false) Integer categoryId,  Model model) {
         if (categoryId == null) {
             model.addAttribute("title", "All Events");
             model.addAttribute("events", eventRepository.findAll());
@@ -47,7 +47,6 @@ public class EventController {
 ;
             }
         }
-
         return "events/index";
     }
 
@@ -66,12 +65,16 @@ public class EventController {
     @PostMapping("create")
     public String processCreateEventForm(@ModelAttribute @Valid Event newEvent,
                                          Errors errors, Model model) {
+        // Note: Spring Boot will put fields in EventDetails nto an EventDetails object
+        // in the Event class when model binding occurs
+
         // if there are any errors in the Model object...go back to the form
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Event");
             model.addAttribute("categories", eventCategoryRepository.findAll()); // added
             return "events/create";
         }
+
         eventRepository.save(newEvent);
         return "redirect:"; // root path can be left off
     }
