@@ -17,9 +17,9 @@ public class Tag extends AbstractEntity {
     @NotBlank
     private String name;
 
-    // annotation tells hibernate that to figure out which events are in this collection
-    // it should to look for events in this collection that have the given
-    // tag object associated with it in the tags field in that particular class
+    // Along with the @ManyToMany annotation, the mappedBy parameter ensures
+    // that Hibernate populates the events collection of a given Tag object with every
+    // Event object that has that specific tag in its tags collection
     @ManyToMany(mappedBy = "tags")
     private final List<Event> events = new ArrayList<>();
 

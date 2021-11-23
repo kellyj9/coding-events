@@ -30,9 +30,15 @@
         <th>Category Name</th>
         <td th:text="${event.eventCategory.name}"></td>
     </tr>
-
+    <tr>
+        <th>Tags</th>
+        <td>
+            <span th:each="tag: ${tags}" th:text="${tag.displayName} + ' '"></span>
+        </td>
+    </tr>
 </table>
 
+<a th:href="'/events/add-tag?eventId=' + ${event.id}">Add Tag</a>
 
 </body>
 </html>

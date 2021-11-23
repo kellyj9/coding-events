@@ -65,7 +65,7 @@ public class Event extends AbstractEntity {
     }
 
     // gives a way to add tags without touching the tag collection directly
-    public void AddTag(Tag tag) {
+    public void addTag(Tag tag) {
         this.tags.add(tag);
     }
 
