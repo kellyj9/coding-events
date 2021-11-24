@@ -16,6 +16,7 @@ firstName (String) - the user’s first name
 lastName (String) - the user’s last name
 email (String) - the user’s email, which will also function as their username
 password (String) - the user’s password
+
 The class would need getters for all of these fields. It could have setters for all fields except id (since it shouldn’t change).
 
 The Person class might also have the following references:
